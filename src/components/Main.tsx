@@ -4,7 +4,7 @@ import IngredientsList from "./IngredientsList";
 import { getRecipeFromAI } from "../AI.ts"
 
 export default function Main() {
-    const [ingredients, setIngredients] = useState<string[]>(["rice", "chicken", "paprika", "chinese style sausages"]);
+    const [ingredients, setIngredients] = useState<string[]>([]);
     const [recipeShown, setRecipeShown] = useState<boolean>(false);
     const [recipe, setRecipe] = useState<string>('')
 
@@ -14,7 +14,7 @@ export default function Main() {
     }
 
     async function getRecipe() {
-        setRecipeShown(prev => !prev)
+        setRecipeShown(true)
         const instructions: string = await getRecipeFromAI(ingredients)
         setRecipe(instructions)
     }

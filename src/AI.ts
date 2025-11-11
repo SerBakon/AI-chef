@@ -7,11 +7,10 @@ You are an assistant that receives a list of ingredients that a user has and sug
 const hf = new InferenceClient(import.meta.env.VITE_HF_ACCESS_TOKEN as string);
 
 export async function getRecipeFromAI(ingredientsArr: string[]): Promise<string> {
-    console.log("getting response from AI...")
     const ingredientsString = ingredientsArr.join(", ")
     try {
         const response = await hf.chatCompletion({
-            model: "openai/gpt-oss-20b:groq",
+            model: "meta-llama/Llama-3.1-8B-Instruct",
             messages: [
                 { role: "system", content: SYSTEM_PROMPT },
                 { role: "user", content: `I have ${ingredientsString}. Please give me a recipe you'd recommend I make!` },
